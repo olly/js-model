@@ -41,7 +41,7 @@ When [creating a model](#model) you can pass a function as the optional second a
 
     var Project = Model("project", function() {
       this.extend({
-        find_by_title: function(title) {
+        findByTitle: function(title) {
           return this.detect(function() {
             return this.get("title") == title
           })
@@ -49,7 +49,7 @@ When [creating a model](#model) you can pass a function as the optional second a
       })
     })
 
-    Project.find_by_title("stuff")
+    Project.findByTitle("stuff")
     // => "stuff" project model
 
 #### Instance properties
@@ -74,10 +74,10 @@ Simple associations can be mimicked by adding a couple of instance methods. Here
     var Cat = Model("cat", function() {
       this.include({
         mat: function() {
-          var mat_id = this.get("mat_id")
+          var matID = this.get("mat_id")
 
           return Mat.detect(function() {
-            return this.id() == mat_id
+            return this.id() == matID
           })
         }
       })
@@ -104,11 +104,11 @@ js-model allows you to listen to the lifecycle of objects based on the events th
 It is possible to bind to an event occurring when adding and removing an object to a collection.
 
     Project.bind("add", function(new_object) {
-      add_object_to_ui(new_object)
+      addObjectToUI(new_object)
     })
 
     Project.bind("remove", function(removed_object) {
-      remove_object_from_ui(removed_object)
+      removeObjectFromUI(removed_object)
     })
 
 #### Instance events
@@ -118,13 +118,13 @@ Parts of your application can be bound to changes which happen to a specific ins
     var project = Project.first()
 
     project.bind("update", function() {
-      my_ui_elem.text(this.get("name"))
+      myUIElement.text(this.get("name"))
     })
 
 Including when the instance is destroyed:
 
     project.bind("destroy", function() {
-      my_ui_elem.remove()
+      myUIElement.remove()
     })
 
 #### Custom events
@@ -132,7 +132,7 @@ Including when the instance is destroyed:
 You might also want to have custom events on objects which might be linked up to a UI element.
 
     project.bind("turn_blue", function() {
-      my_ui_elem.css("background", "blue")
+      myUIElement.css("background", "blue")
     })
 
     project.trigger("turn_blue")

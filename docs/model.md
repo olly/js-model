@@ -8,7 +8,7 @@ The optional function is used to define custom methods and properties on your ne
 
     var Project = Model("project", function() {
       this.extend({
-        find_by_title: function(title) {
+        findByTitle: function(title) {
           return this.detect(function() {
             return this.get("title") == title
           })
@@ -22,13 +22,13 @@ The optional function is used to define custom methods and properties on your ne
       })
     })
 
-    Project.find_by_title("stuff").markAsDone()
+    Project.findByTitle("stuff").markAsDone()
     // "stuff" project marked as done
 
 The function is also called with two arguments: the class itself and its prototype. The above could be written as:
 
     var Project = Model("project", function(klass, proto) {
-      klass.find_by_title = function(title) {
+      klass.findByTitle = function(title) {
         return this.detect(function() {
           return this.get("title") == title
         })
@@ -39,5 +39,5 @@ The function is also called with two arguments: the class itself and its prototy
       }
     })
 
-    Project.find_by_title("stuff").markAsDone()
+    Project.findByTitle("stuff").markAsDone()
     // "stuff" project marked as done
