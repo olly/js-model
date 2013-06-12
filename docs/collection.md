@@ -12,20 +12,20 @@ Adds a model to a collection and won’t allow you to add the same model to a co
 
     Food.collection
     // => []
-    
+
     var egg = new Food({ id: 1, name: "egg" })
     var ham = new Food({ id: 2, name: "ham" })
     var cheese = new Food({ id: 3, name: "cheese" })
-    
+
     Food.collection.add(egg)
     Food.collection
     // => [egg]
-    
+
     Food.collection.add(ham)
     Food.collection.add(cheese)
     Food.collection
     // => [egg, ham, cheese]
-    
+
     Food.collection.add(egg)
     Food.collection
     // => [egg, ham, cheese]
